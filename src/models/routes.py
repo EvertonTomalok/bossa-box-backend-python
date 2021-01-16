@@ -3,6 +3,10 @@ from typing import List
 from pydantic import BaseModel
 
 
+class User(BaseModel):
+    user: str
+
+
 class Message(BaseModel):
     status: str = "error"
     data: dict = {"msg": "Something went wrong!"}
