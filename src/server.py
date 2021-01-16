@@ -1,12 +1,11 @@
 import json
-from typing import List
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 from starlette.responses import HTMLResponse, JSONResponse
 
 from src.controllers.tools import add_tool, find_tools
+from src.models.routes import Tool
 
 app = FastAPI()
 
@@ -17,13 +16,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-class Tool(BaseModel):
-    title: str
-    link: str
-    description: str
-    tags: List[str]
 
 
 @app.get("/", response_class=HTMLResponse)
