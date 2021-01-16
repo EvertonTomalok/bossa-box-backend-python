@@ -1,3 +1,5 @@
+from bson import ObjectId
+
 from src.adapters.mongodb.db import MongoDBDatabase
 
 
@@ -16,3 +18,8 @@ class ToolsRepository:
         with MongoDBDatabase("tools", "tools_collection") as db:
             _filter = {"tags": {"$in": [tag]}} if tag else {}
             return db.col.find(_filter, skip=skip, limit=limit)
+
+    @staticmethod
+    def delete_tool(id=str):
+        with MongoDBDatabase("tools", "tools_collection") as db:
+            return db.col.find_one_and_delete({"_id": ObjectId(id)})

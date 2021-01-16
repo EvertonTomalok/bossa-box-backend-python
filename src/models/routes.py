@@ -3,6 +3,11 @@ from typing import List
 from pydantic import BaseModel
 
 
+class Message(BaseModel):
+    status: str = "error"
+    data: dict = {"msg": "Something went wrong!"}
+
+
 class Tool(BaseModel):
     title: str
     link: str

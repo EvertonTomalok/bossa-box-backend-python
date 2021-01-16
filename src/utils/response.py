@@ -7,12 +7,7 @@ class Response:
         self.code_status = code_status
 
     def to_json(self):
-        if 200 <= self.code_status < 400:
-            return {
-                "status": "ok",
-                "data": self.data,
-            }
         return {
-            "status": "error",
-            "error": self.data,
+            "status": "ok" if 200 <= self.code_status < 400 else "not ok",
+            "data": self.data,
         }
