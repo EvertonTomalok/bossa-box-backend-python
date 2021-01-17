@@ -48,14 +48,14 @@ RESPONSE_RETURN_FIND_TOOL = {
 RESPONSE_RETURN_TOKEN = {
     "404": {"model": Message, "description": "Something went wrong!"},
     "201": {
-        "description": "Item insert with success",
+        "description": "Token created with success",
         "content": {
             "application/json": {
                 "example": {
                     "status": "ok",
                     "data": {
                         "token": (
-                            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRXZlcnRvbiBUb21hbG9rIn0."
+                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRXZlcnRvbiBUb21hbG9rIn0."
                             "OroiSjd5H1R3e1AexgP8US6UxHopAZDOHZ6jE09CyMQ"
                         )
                     },
