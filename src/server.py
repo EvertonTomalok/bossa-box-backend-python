@@ -16,7 +16,8 @@ from src.models.routes import Tool, User
 from src.models.swagger_responses import (
     RESPONSE_RETURN_FIND_TOOL,
     RESPONSE_RETURN_POST_TOOL,
-    RESPONSE_RETURN_TOKEN, RESPONSE_RETURN_PUT_TOOL,
+    RESPONSE_RETURN_PUT_TOOL,
+    RESPONSE_RETURN_TOKEN,
 )
 
 nest_asyncio.apply()
@@ -55,9 +56,9 @@ async def home():
     """
 
 
-@app.get("/health", response_class=HTMLResponse)
+@app.get("/health", status_code=200)
 async def health():
-    return "<p>Ok</p>"
+    return "ok"
 
 
 @app.get(

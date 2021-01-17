@@ -1,25 +1,11 @@
 import logging
-from functools import wraps
 
 from src.repositories.tools import ToolsRepository
 from src.utils.response import Response
+from src.utils.shields import shield_from_error
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-
-
-def shield_from_error(func, code_status=500):
-    @wraps(func)
-    def decorated_view(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except Exception as err:
-            logger.critical(f"{func.__name__} -> {type(err)} - {err}")
-            return Response(
-                data={"msg": "Something went wrong!"}, code_status=code_status
-            ).to_json()
-
-    return decorated_view
 
 
 def _object_id_handler(o: dict):

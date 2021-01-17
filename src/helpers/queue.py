@@ -5,7 +5,7 @@ import faust
 
 logger = logging.getLogger(__name__)
 
-KAFKA_BROKER = getenv("kAFKA_BROKER", "kafka://localhost")
+KAFKA_BROKER = getenv("KAFKA_BROKER", "kafka://localhost")
 app = faust.App(
     "jobs_executor",
     broker=KAFKA_BROKER,

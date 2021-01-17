@@ -14,7 +14,7 @@ web:
 test:
 	pipenv run python -m pytest tests/ $(SNAPSHOT_UPDATE)
 
-start-kafka-email-worker:
+start-kafka-scrapping-worker:
 	pipenv run faust -A src.workers.link_scrapper worker --web-port=6066 -l info
 
 create-mongodb-indexes:
