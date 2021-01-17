@@ -23,7 +23,7 @@ class ToolsRepository:
     @staticmethod
     def delete_tool(id=str):
         with MongoDBDatabase("tools", "tools_collection") as db:
-            return db.col.find_one_and_delete({"_id": ObjectId(id)})
+            return db.col.delete_one({"_id": ObjectId(id)})
 
     @staticmethod
     def update_tool(tool_id: str, tool: dict):
