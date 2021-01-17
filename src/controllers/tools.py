@@ -52,6 +52,7 @@ class ToolsController:
     @staticmethod
     @shield_from_error
     def update_tool(id: str, tool) -> dict:
-        data = ToolsRepository.update_tool(id, tool)
-        data = _object_id_handler(data)
-        return Response(data=data, code_status=200).to_json()
+        if data := ToolsRepository.update_tool(id, tool):
+            data = _object_id_handler(data)
+            return Response(data=data, code_status=200).to_json()
+        return {}
