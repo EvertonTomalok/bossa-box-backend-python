@@ -20,6 +20,7 @@ pymongo = "==3.11.2"
 cryptography = "*"
 python-jose =  "*"
 faust = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"

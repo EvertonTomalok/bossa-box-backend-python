@@ -39,6 +39,18 @@ services:
     environment:
       KAFKA_BROKERCONNECT: "kafka:29092"
 
+  # Start local MongoDB
+  mongo:
+    image: mongo:4.0.3-xenial
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./.mongodb:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+
 networks:
   broker-kafka:
     driver: bridge

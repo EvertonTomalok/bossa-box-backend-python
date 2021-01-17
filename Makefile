@@ -1,15 +1,18 @@
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
+
 setup:
 	pip3 install pipenv
-	pipenv sync
+	pipenv install --deploy --system
 
 web:
 	pipenv run uvicorn src.server:app --port=3000 --workers 5 --reload
 
 test:
 	pipenv run python -m pytest tests/ $(SNAPSHOT_UPDATE)
-
-up:
-	docker-compose up -d
 
 start-kafka-email-worker:
 	pipenv run faust -A src.workers.link_scrapper worker --web-port=6066 -l info
