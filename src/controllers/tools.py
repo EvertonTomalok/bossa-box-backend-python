@@ -46,6 +46,5 @@ class ToolsController:
     @staticmethod
     @shield_from_error
     def delete_tool(id: str) -> dict:
-        data = ToolsRepository.delete_tool(id)
-        data = _object_id_handler(data)
-        return Response(data=data, code_status=204).to_json()
+        ToolsRepository.delete_tool(id)
+        return Response(data="", code_status=204).to_json()

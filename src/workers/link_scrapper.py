@@ -11,11 +11,11 @@ logger.setLevel(logging.INFO)
 @app.agent(SCRAPPING_LINK_TOPIC_KAFKA)
 async def execute_job_agent(stream):
     async for event in stream.noack().events():
-        await simulate_sending_email(event.value)
+        await simulate_scrapping(event.value)
         event.ack()
 
 
-async def simulate_sending_email(link_obj):
+async def simulate_scrapping(link_obj):
     time_to_sleep = randint(10, 30) / 10
     await sleep(time_to_sleep)
 

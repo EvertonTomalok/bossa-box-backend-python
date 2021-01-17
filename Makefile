@@ -1,17 +1,21 @@
+setup:
+	pip3 install pipenv
+	pipenv sync
+
 web:
-	uvicorn src.server:app --port=3000 --workers 5 --reload
+	pipenv run uvicorn src.server:app --port=3000 --workers 5 --reload
 
 test:
-	python -m pytest tests/ $(SNAPSHOT_UPDATE)
+	pipenv run python -m pytest tests/ $(SNAPSHOT_UPDATE)
 
 up:
 	docker-compose up -d
 
 start-kafka-email-worker:
-	faust -A src.workers.link_scrapper worker --web-port=6066 -l info
+	pipenv run faust -A src.workers.link_scrapper worker --web-port=6066 -l info
 
 create-mongodb-indexes:
-	pipenv run python -m scripts.create_indexes_mongodb
+	pipenv run python -m scripts.create_index_mongodb
 
 .PHONY: autoflake
 autoflake:
