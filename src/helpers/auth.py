@@ -19,19 +19,16 @@ class Auth:
 
     @staticmethod
     def decode(token: str) -> dict:
-        return jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+        return jwt.decode(token, JWT_SECRET, algorithms=["HS256"],)
 
 
 def check_jwt(func):
     @wraps(func)
     async def decorated_view(*args, **kwargs):
         try:
-            token = Auth.decode(kwargs.get("token"))
-            if "user" not in token:
-                raise KeyError("Token Invalid!")
-
+            Auth.decode(kwargs.get("token"))
             return await func(*args, **kwargs)
-        except (JWTError, KeyError):
+        except JWTError:
             return Response(status_code=401, content="Forbidden.")
 
     return decorated_view

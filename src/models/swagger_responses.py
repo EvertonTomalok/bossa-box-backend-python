@@ -12,8 +12,8 @@ data_example = {
 }
 
 RESPONSE_RETURN_POST_TOOL = {
-    404: {"model": Message, "description": "Something went wrong!"},
-    201: {
+    "404": {"model": Message, "description": "Something went wrong!"},
+    "201": {
         "description": "Item insert with success",
         "content": {
             "application/json": {"example": {"status": "ok", "data": data_example,}}
@@ -22,8 +22,8 @@ RESPONSE_RETURN_POST_TOOL = {
 }
 
 RESPONSE_RETURN_FIND_TOOL = {
-    404: {"model": Message, "description": "Something went wrong!"},
-    201: {
+    "404": {"model": Message, "description": "Something went wrong!"},
+    "201": {
         "description": "Item insert with success",
         "content": {
             "application/json": {
@@ -34,8 +34,8 @@ RESPONSE_RETURN_FIND_TOOL = {
 }
 
 RESPONSE_RETURN_TOKEN = {
-    404: {"model": Message, "description": "Something went wrong!"},
-    201: {
+    "404": {"model": Message, "description": "Something went wrong!"},
+    "201": {
         "description": "Item insert with success",
         "content": {
             "application/json": {

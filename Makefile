@@ -4,6 +4,12 @@ web:
 test:
 	python -m pytest tests/ $(SNAPSHOT_UPDATE)
 
+up:
+	docker-compose up -d
+
+start-kafka-email-worker:
+	faust -A src.workers.link_scrapper worker --web-port=6066 -l info
+
 create-mongodb-indexes:
 	pipenv run python -m scripts.create_indexes_mongodb
 
