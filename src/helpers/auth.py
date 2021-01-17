@@ -13,7 +13,7 @@ def check_jwt(func):
     @wraps(func)
     async def decorated_view(*args, **kwargs):
         try:
-            Auth.decode(kwargs.get("token"))
+            Auth.decode(kwargs.get("authorization"))
             return await func(*args, **kwargs)
         except ExpiredSignatureError:
             return Response(status_code=401, content="The token was expired.")

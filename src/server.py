@@ -69,7 +69,7 @@ async def health():
 )
 @check_jwt
 async def get_tools(
-    tag: str = "", skip: int = 0, limit: int = 10, token: str = Header("")
+    tag: str = "", skip: int = 0, limit: int = 10, authorization: str = Header("")
 ):
     return ToolsController.find_tools(tag, skip, limit)
 
@@ -81,7 +81,7 @@ async def get_tools(
     responses=RESPONSE_RETURN_POST_TOOL,
 )
 @check_jwt
-async def tools_send(tool: Tool, token: str = Header("")):
+async def tools_send(tool: Tool, authorization: str = Header("")):
     tool_object = ToolsController.add_tool(json.loads(tool.json()))
     loop = asyncio.get_event_loop()
     loop.run_until_complete(
@@ -97,7 +97,7 @@ async def tools_send(tool: Tool, token: str = Header("")):
 )
 @check_jwt
 async def tool_delete(
-    id: str = Path(..., title="The ID of the item to delete"), token: str = Header(""),
+    id: str = Path(..., title="The ID of the item to delete"), authorization: str = Header(""),
 ):
     ToolsController.delete_tool(id=id)
     return ""
@@ -113,7 +113,7 @@ async def tool_delete(
 async def tool_update(
     tool: Tool,
     id: str = Path(..., title="The ID of the item to delete"),
-    token: str = Header(""),
+    authorization: str = Header(""),
 ):
     if new_tool := ToolsController.update_tool(id=id, tool=json.loads(tool.json())):
         return new_tool
