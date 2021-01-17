@@ -1,20 +1,19 @@
 import json
 from datetime import datetime
-from functools import wraps
 
 from fastapi import FastAPI, Header, Path
 from fastapi.middleware.cors import CORSMiddleware
-from jose import JWTError
 from starlette.requests import Request
-from starlette.responses import HTMLResponse, JSONResponse, Response
+from starlette.responses import HTMLResponse, JSONResponse
 
 from src.controllers.token import TokenController
 from src.controllers.tools import ToolsController
-from src.helpers.auth import Auth
+from src.helpers.auth import check_jwt
 from src.models.routes import Tool, User
 from src.models.swagger_responses import (
     RESPONSE_RETURN_FIND_TOOL,
     RESPONSE_RETURN_POST_TOOL,
+    RESPONSE_RETURN_TOKEN,
 )
 
 app = FastAPI()
@@ -26,18 +25,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-def check_jwt(func):
-    @wraps(func)
-    async def decorated_view(*args, **kwargs):
-        try:
-            Auth.decode(kwargs.get("token"))["user"]
-            return await func(*args, **kwargs)
-        except (JWTError, KeyError):
-            return Response(status_code=401, content="Forbidden.")
-
-    return decorated_view
 
 
 @app.middleware("http")
@@ -104,7 +91,10 @@ async def tool_delete(
 
 
 @app.post(
-    "/token", status_code=201, response_class=JSONResponse,
+    "/token",
+    status_code=201,
+    response_class=JSONResponse,
+    responses=RESPONSE_RETURN_TOKEN,
 )
 async def create_token(user: User):
     return TokenController.create_token(json.loads(user.json()))
