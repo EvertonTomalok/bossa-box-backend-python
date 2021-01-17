@@ -6,7 +6,7 @@ import nest_asyncio
 from fastapi import FastAPI, Header, Path
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
-from starlette.responses import HTMLResponse, JSONResponse
+from starlette.responses import HTMLResponse, JSONResponse, Response
 
 from src.controllers.token import TokenController
 from src.controllers.tools import ToolsController
@@ -16,7 +16,7 @@ from src.models.routes import Tool, User
 from src.models.swagger_responses import (
     RESPONSE_RETURN_FIND_TOOL,
     RESPONSE_RETURN_POST_TOOL,
-    RESPONSE_RETURN_TOKEN,
+    RESPONSE_RETURN_TOKEN, RESPONSE_RETURN_PUT_TOOL,
 )
 
 nest_asyncio.apply()
@@ -100,6 +100,23 @@ async def tool_delete(
 ):
     ToolsController.delete_tool(id=id)
     return ""
+
+
+@app.put(
+    "/tools/{id}",
+    status_code=200,
+    response_class=JSONResponse,
+    responses=RESPONSE_RETURN_PUT_TOOL,
+)
+@check_jwt
+async def tool_update(
+    tool: Tool,
+    id: str = Path(..., title="The ID of the item to delete"),
+    token: str = Header(""),
+):
+    if new_tool := ToolsController.update_tool(id=id, tool=json.loads(tool.json())):
+        return new_tool
+    return Response(content="", status_code=204)
 
 
 @app.post(

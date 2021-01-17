@@ -21,6 +21,20 @@ RESPONSE_RETURN_POST_TOOL = {
     },
 }
 
+RESPONSE_RETURN_PUT_TOOL = {
+    "404": {"model": Message, "description": "Something went wrong!"},
+    "200": {
+        "description": "Item insert with success",
+        "content": {
+            "application/json": {"example": {"status": "ok", "data": data_example,}}
+        },
+    },
+    "204": {
+        "description": "No item Found"
+    }
+}
+
+
 RESPONSE_RETURN_FIND_TOOL = {
     "404": {"model": Message, "description": "Something went wrong!"},
     "201": {

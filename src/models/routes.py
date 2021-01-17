@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -17,6 +17,7 @@ class Tool(BaseModel):
     link: str
     description: str
     tags: List[str]
+    id: Optional[str]
 
     class Config:
         schema_extra = {
