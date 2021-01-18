@@ -84,7 +84,7 @@ Gere um novo token para utilizar nos ENDPOINTS abaixo ( o token tem  DURAÇÃO D
 
 - `METHOD`: `POST`
 - `ENDPOINT`: /tools
-- `HEADER`: `token` = `Bearer ...`
+- `HEADER`: `authorization` = `Bearer ...`
 - `BODY`:
 ```
 {
@@ -128,7 +128,7 @@ no retorno.
   - tag (filtrar pela tag)
   - skip (pula numero de documentos)
   - limit  (limita o numero de documentos)
-- `HEADER`: `token` = `Bearer ...`
+- `HEADER`: `authorization` = `Bearer ...`
 
 
  `RETORNO`:
@@ -172,7 +172,7 @@ Rota para edição de documento
 
 - `METHOD`: `PUT`
 - `ENDPOINT`: /tools/:id
-- `HEADER`: `token` = `Bearer ...`
+- `HEADER`: `authorization` = `Bearer ...`
 - `BODY`:
 ```
 {
@@ -204,7 +204,7 @@ Rota para remoção de documento por um ids
 
 - `METHOD`: `DELETE`
 - `ENDPOINT`: /tools/:id
-- `HEADER`: `token` = `Bearer ...`
+- `HEADER`: `authorization` = `Bearer ...`
 
  `RETORNO`:
 
