@@ -97,7 +97,8 @@ async def tools_send(tool: Tool, authorization: str = Header("")):
 )
 @check_jwt
 async def tool_delete(
-    id: str = Path(..., title="The ID of the item to delete"), authorization: str = Header(""),
+    id: str = Path(..., title="The ID of the item to delete"),
+    authorization: str = Header(""),
 ):
     ToolsController.delete_tool(id=id)
     return ""
