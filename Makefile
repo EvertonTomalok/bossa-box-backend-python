@@ -9,7 +9,7 @@ setup:
 	pipenv install --deploy --system
 
 web:
-	pipenv run uvicorn src.server:app --port=3000 --workers 5 --reload
+	pipenv run uvicorn src.server:app --port=5000 --workers 5 --reload
 
 test:
 	pipenv run python -m pytest tests/ $(SNAPSHOT_UPDATE)
