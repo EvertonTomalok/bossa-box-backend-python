@@ -8,7 +8,7 @@ setup:
 	pip3 install pipenv
 	pipenv install --deploy --system
 
-setup-dev: setup
+setup-dev:
 	pip3 install pipenv
 	pipenv install --deploy --system --dev
 
