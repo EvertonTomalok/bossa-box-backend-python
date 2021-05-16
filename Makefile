@@ -8,9 +8,9 @@ setup:
 	pip3 install pipenv
 	pipenv install --deploy --system
 
-.PHONY: setup-dev
 setup-dev: setup
-	pipenv install --dev
+	pip3 install pipenv
+	pipenv install --deploy --system --dev
 
 web:
 	pipenv run uvicorn src.server:app --port=5000 --workers 5 --reload

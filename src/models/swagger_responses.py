@@ -16,7 +16,7 @@ RESPONSE_RETURN_POST_TOOL = {
     "201": {
         "description": "Item insert with success",
         "content": {
-            "application/json": {"example": {"status": "ok", "data": data_example,}}
+            "application/json": {"example": {"status": "ok", "data": data_example}}
         },
     },
 }
@@ -55,7 +55,8 @@ RESPONSE_RETURN_TOKEN = {
                     "status": "ok",
                     "data": {
                         "token": (
-                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRXZlcnRvbiBUb21hbG9rIn0."
+                            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9."
+                            "eyJ1c2VyIjoiRXZlcnRvbiBUb21hbG9rIn0."
                             "OroiSjd5H1R3e1AexgP8US6UxHopAZDOHZ6jE09CyMQ"
                         )
                     },
