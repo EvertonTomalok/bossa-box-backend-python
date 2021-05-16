@@ -19,10 +19,12 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        make setup
+        make setup-dev
     - name: Lint
       run: |
+        export PIPENV_IGNORE_VIRTUALENVS=1
         make lint
     - name: Test with pytest
       run: |
+        export PIPENV_IGNORE_VIRTUALENVS=1
         make test
