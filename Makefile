@@ -16,7 +16,7 @@ web:
 	pipenv run uvicorn src.server:app --port=5000 --workers 5 --reload
 
 test:
-	pipenv run python -m pytest tests/ $(SNAPSHOT_UPDATE)
+	pipenv run pytest tests/ $(SNAPSHOT_UPDATE)
 
 start-kafka-scrapping-worker:
 	pipenv run faust -A src.workers.link_scrapper worker --web-port=6066 -l info
