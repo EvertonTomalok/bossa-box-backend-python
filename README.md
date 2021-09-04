@@ -66,7 +66,7 @@ Generate a new token to use in the ENDPOINT below ( it has a 1-hour duration ):
 }
 ```
 
- `RETORNO`:
+ `RETURNS`:
 
 ```
 {
@@ -78,7 +78,7 @@ Generate a new token to use in the ENDPOINT below ( it has a 1-hour duration ):
 ```
 
 
-## Adicionar novo documento
+## Adding new document
 
 - `METHOD`: `POST`
 - `ENDPOINT`: /tools
@@ -93,7 +93,7 @@ Generate a new token to use in the ENDPOINT below ( it has a 1-hour duration ):
  }
 ```
 
- `RETORNO`:
+ `RETURNS`:
 
 ```
 {
@@ -114,18 +114,18 @@ Generate a new token to use in the ENDPOINT below ( it has a 1-hour duration ):
 ```
 
 
-## Procurar Documentos
+## Searching for Documents
 
-Rota para procurar documentos. Caso apenas chamada, trás todos os documentos ( lógica de negócio ).
-Aceita parametros `tag` para filtro, e `skip` para pular documentos, e `limit` para limitar numero de documentos
-no retorno.
+This endpoint will search for documents. If you only call it, it'll return all the documents.
+
+You could use parameters, as `tag` to filter results by tag, and `skip` to set an offset, and `limit` to limit the number of returning documents.
 
 - `METHOD`: `GET`
 - `ENDPOINT`: /tools
-- `PARAMETROS`: OPCIONAIS
-  - tag (filtrar pela tag)
-  - skip (pula numero de documentos)
-  - limit  (limita o numero de documentos)
+- `PARAMETROS`: OPTIONAL
+  - tag (set a filter by tag)
+  - skip (skip documents)
+  - limit  (limit documents)
 - `HEADER`: `authorization` = `Bearer ...`
 
 
@@ -164,9 +164,9 @@ no retorno.
 }
 ```
 
-## Editar documento
+## Editing document
 
-Rota para edição de documento
+Endpoint to edit a document
 
 - `METHOD`: `PUT`
 - `ENDPOINT`: /tools/:id
@@ -181,7 +181,7 @@ Rota para edição de documento
  }
 ```
 
- `RETORNO`:
+ `RETURNS`:
 
 ```
 {
@@ -196,9 +196,9 @@ Rota para edição de documento
 }
 ```
 
-## Remover documento
+## Removing a document
 
-Rota para remoção de documento por um ids
+Endpoint to remove a document by IDs
 
 - `METHOD`: `DELETE`
 - `ENDPOINT`: /tools/:id
@@ -210,15 +210,15 @@ Rota para remoção de documento por um ids
     204 NO CONTENT
 ```
 
-# Variáveis de ambiente
+# Environment variables
 
 
-| Chave                            | Descrição                                        |
+| Key                              | Description                                      |
 |----------------------------------|--------------------------------------------------|
-| MONGO_URL                        | URL de acesso ao banco                           |
-| JWT_SECRET                       | Segredo para geração de token                    |
-| TIME_TO_TOKEN_EXPIRES_IN_MINUTES | Tempo de expiração em minutos de um token gerado |
-| KAFKA_BROKER                     | URL de acesso ao broker do kafka                 |
+| MONGO_URL                        | Database's URL                                   |
+| JWT_SECRET                       | JWT secret generation                            |
+| TIME_TO_TOKEN_EXPIRES_IN_MINUTES | Time to expire the JWT                           |
+| KAFKA_BROKER                     | Kafka broker's URL                               |
 
 
 --------------------------------
