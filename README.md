@@ -1,5 +1,10 @@
 # bossa-box-backend-python
 
+This ReadMe has two version. One in english, and another in Portuguese.
+
+- [English Version](#english-version)
+- [Versão em Português](#versao-em-portugues)
+
 # English Version
 
 A Python API REST, that implements CRUD in a MongoDB database.
@@ -223,7 +228,7 @@ Endpoint to remove a document by IDs
 
 --------------------------------
 
-# Portuguese
+# Versão em Português
 
 API REST, utilizando BACKEND em python, que realiza CRUD de tools em um banco de dados NoSQL (MongoDB).
 
