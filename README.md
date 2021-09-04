@@ -3,7 +3,7 @@
 This ReadMe has two version. One in english, and another in Portuguese.
 
 - [English Version](#english-version)
-- [Versão em Português](#versao-em-portugues)
+- [Versão em Português](#versão-em-português)
 
 # English Version
 
@@ -227,6 +227,8 @@ Endpoint to remove a document by IDs
 
 
 --------------------------------
+
+<br><br>
 
 # Versão em Português
 
