@@ -49,6 +49,10 @@ curl --request GET 'http://127.0.0.1:3000/health'
 
 It must return "ok"
 
+# Postman
+
+You could import the json files in folder `/postman` (in the root source), to your postman.
+It will be easier to use manipulate the endpoints using postman. 
 
 # ENDPOINTS
 

@@ -131,3 +131,5 @@ dmypy.json
 # others
 .idea
 jobs_executor-data/
+
+.mongodb

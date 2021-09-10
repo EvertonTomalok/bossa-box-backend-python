@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "4469210a-8768-4e7f-9d19-0909d669dd68",
+		"name": "bossa-box-python",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE TOOL",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/tools/600ddf3e5a4cde112463809d",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"tools",
+						"600ddf3e5a4cde112463809d"
+					]
+				},
+				"description": "Deleting a tool"
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE TOOL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"title\": \"WebService in Node\",\n     \"link\": \"https://github.com/node/node-api-v2\",\n     \"description\": \"Webservice in Node.\",\n     \"tags\":[\"node\", \"express\",  \"postgres\"]\n }    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/tools",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"tools"
+					]
+				},
+				"description": "Creating a tool"
+			},
+			"response": []
+		},
+		{
+			"name": "GET TOOL",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/tools?tag=express&skip=0&limit=10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"tools"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "express"
+						},
+						{
+							"key": "skip",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				},
+				"description": "getting a tool"
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT TOOL",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"WebService in nodejs\",\n    \"link\": \"https://github.com/node/node-koa\",\n    \"description\": \"Webservice in Node.\",\n    \"tags\": [\n        \"node\",\n        \"express\",\n        \"mysql\"\n    ]\n }    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/tools/600ddf3e5a4cde112463809d",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"tools",
+						"600ddf3e5a4cde112463809d"
+					]
+				},
+				"description": "Editing a tool"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = pm.response.json();",
+							"pm.environment.set('token', res.data.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"user\": \"Everton Tomalok\"\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/token",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"token"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Creating token"
+			},
+			"response": []
+		},
+		{
+			"name": "Get HEALTH",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"user\": \"Everton Tomalok\"\n}    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/health",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"health"
+					]
+				},
+				"description": "health"
+			},
+			"response": []
+		}
+	]
+}
