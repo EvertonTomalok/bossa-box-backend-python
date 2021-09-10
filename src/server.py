@@ -5,7 +5,6 @@ import asyncio
 import json
 from datetime import datetime
 
-import nest_asyncio
 from fastapi import FastAPI, Header, Path
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
@@ -23,7 +22,6 @@ from src.models.swagger_responses import (
     RESPONSE_RETURN_TOKEN,
 )
 
-nest_asyncio.apply()
 
 app = FastAPI()
 
@@ -45,7 +43,7 @@ async def add_process_time_header(request: Request, call_next):
     return response
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse, tags=["Home"])
 async def home():
     return """
     <html>
@@ -59,7 +57,7 @@ async def home():
     """
 
 
-@app.get("/health", status_code=200)
+@app.get("/health", status_code=200, tags=["Health"])
 async def health():
     return "ok"
 
@@ -69,6 +67,7 @@ async def health():
     status_code=200,
     response_class=JSONResponse,
     responses=RESPONSE_RETURN_FIND_TOOL,
+    tags=["Tools"],
 )
 @check_jwt
 async def get_tools(
@@ -82,6 +81,7 @@ async def get_tools(
     status_code=201,
     response_class=JSONResponse,
     responses=RESPONSE_RETURN_POST_TOOL,
+    tags=["Tools"],
 )
 @check_jwt
 async def tools_send(tool: Tool, authorization: str = Header("")):
@@ -96,7 +96,7 @@ async def tools_send(tool: Tool, authorization: str = Header("")):
 
 
 @app.delete(
-    "/tools/{id}", status_code=204, response_class=HTMLResponse,
+    "/tools/{id}", status_code=204, response_class=HTMLResponse,tags=["Tools"]
 )
 @check_jwt
 async def tool_delete(
@@ -112,6 +112,7 @@ async def tool_delete(
     status_code=200,
     response_class=JSONResponse,
     responses=RESPONSE_RETURN_PUT_TOOL,
+    tags=["Tools"],
 )
 @check_jwt
 async def tool_update(
@@ -129,6 +130,7 @@ async def tool_update(
     status_code=201,
     response_class=JSONResponse,
     responses=RESPONSE_RETURN_TOKEN,
+    tags=["Token"]
 )
 async def create_token(user: User):
     return TokenController.create_token(json.loads(user.json()))
