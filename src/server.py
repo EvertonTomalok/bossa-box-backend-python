@@ -23,7 +23,7 @@ from src.models.swagger_responses import (
 )
 
 
-app = FastAPI()
+app = FastAPI(title="CRUD - KAFKA")
 
 app.add_middleware(
     CORSMiddleware,
