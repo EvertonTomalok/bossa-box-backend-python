@@ -22,7 +22,6 @@ from src.models.swagger_responses import (
     RESPONSE_RETURN_TOKEN,
 )
 
-
 app = FastAPI(title="CRUD - KAFKA")
 
 app.add_middleware(
@@ -95,9 +94,7 @@ async def tools_send(tool: Tool, authorization: str = Header("")):
     return tool_object
 
 
-@app.delete(
-    "/tools/{id}", status_code=204, response_class=HTMLResponse,tags=["Tools"]
-)
+@app.delete("/tools/{id}", status_code=204, response_class=HTMLResponse, tags=["Tools"])
 @check_jwt
 async def tool_delete(
     id: str = Path(..., title="The ID of the item to delete"),
@@ -130,7 +127,7 @@ async def tool_update(
     status_code=201,
     response_class=JSONResponse,
     responses=RESPONSE_RETURN_TOKEN,
-    tags=["Token"]
+    tags=["Token"],
 )
 async def create_token(user: User):
     return TokenController.create_token(json.loads(user.json()))

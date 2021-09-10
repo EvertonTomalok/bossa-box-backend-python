@@ -46,7 +46,9 @@ class MongoDBDatabase:
         filter_to_update = filter_to_update
 
         self.col.update_one(
-            filter_to_update, {"$set": data}, upsert=True,
+            filter_to_update,
+            {"$set": data},
+            upsert=True,
         )
 
     def find_one_and_update(self, filter: dict, update: dict):
