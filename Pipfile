@@ -15,7 +15,7 @@ snapshottest = "==0.6.0"
 [packages]
 fastapi = "==0.63.0"
 uvicorn = "*"
-nest-asyncio = "==1.4.3"
+nest-asyncio = "==1.5.1"
 pymongo = "==3.11.2"
 cryptography = "*"
 python-jose =  "*"

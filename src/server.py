@@ -5,6 +5,7 @@ import asyncio
 import json
 from datetime import datetime
 
+import nest_asyncio
 from fastapi import FastAPI, Header, Path
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
@@ -21,6 +22,8 @@ from src.models.swagger_responses import (
     RESPONSE_RETURN_PUT_TOOL,
     RESPONSE_RETURN_TOKEN,
 )
+
+nest_asyncio.apply()
 
 app = FastAPI(title="CRUD - KAFKA")
 
